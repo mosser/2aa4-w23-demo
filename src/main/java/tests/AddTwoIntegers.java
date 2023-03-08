@@ -6,8 +6,13 @@ import static mcunit.Assertions.assertEquals;
 
 public class AddTwoIntegers extends TestCase {
 
-    int x = 1;
-    int y = 1;
+    int x, y;
+
+    @Override
+    protected void setUp() {
+        x = 1;
+        y = 1;
+    }
 
     @Override
     protected void test() {
