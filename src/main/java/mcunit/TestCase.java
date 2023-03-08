@@ -4,16 +4,17 @@ import static mcunit.Assertions.assertEquals;
 
 public abstract class TestCase {
 
-    public final void run() {
+    public final TestResult run() {
+        TestResult result = new TestResult(this.getClass().getCanonicalName());
         try {
-            System.out.println(this.getClass().getCanonicalName());
             test();
-            System.out.println("PASSED");
+            result.record(STATUS.PASSED);
         } catch (AssertionError ae) {
-            System.out.println("FAILED");
+            result.record(STATUS.FAILED);
         } catch (Exception e) {
-            System.out.println("ERROR");
+            result.record(STATUS.ERRORED);
         }
+        return result;
     }
 
     protected abstract void test();
