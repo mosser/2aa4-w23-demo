@@ -2,9 +2,9 @@ package mcunit;
 
 import static mcunit.Assertions.assertEquals;
 
-public abstract class TestCase {
+public abstract class TestCase implements Test {
 
-    public final TestResult run() {
+    public final void run(TestReport collector) {
         TestResult result = new TestResult(this.getClass().getCanonicalName());
         try {
             setUp();
@@ -17,7 +17,7 @@ public abstract class TestCase {
         } finally {
             teardown();
         }
-        return result;
+        collector.collect(result);
     }
 
     protected abstract void test();

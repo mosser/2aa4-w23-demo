@@ -1,18 +1,13 @@
 import mcunit.TestReport;
-import tests.AddTwoIntegers;
-import tests.SubtractTwoIntegers;
-import tests.ThrowAnException;
+import tests.IntegerTests;
 
-import static mcunit.Assertions.assertEquals;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("# 2AA4 - Demo");
         TestReport report = new TestReport();
-        report.collect(new AddTwoIntegers().run());
-        report.collect(new SubtractTwoIntegers().run());
-        report.collect(new ThrowAnException().run());
+        new IntegerTests().run(report);
         System.out.println(report);
 
     }
